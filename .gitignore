@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+.coverage
+.pytest_cache/
+.mypy_cache/
+
+# IDE
+.idea/
+
+# OS
+.DS_Store
+
+test_log.txt
