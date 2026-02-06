@@ -121,7 +121,7 @@ for _ in range(3):
 
 ### card_number_generator
 Генератор, который выдаёт номера банковских карт
-в формате XXXX XXXX XXXX XXXX
+в формате 'XXXX XXXX XXXX XXXX'
 в заданном диапазоне.
 
 Пример использования:
@@ -130,6 +130,56 @@ from src.generators import card_number_generator
 
 for card_number in card_number_generator(1, 5):
     print(card_number)
+```
+---
+
+## Модуль decorators
+
+В проект добавлен модуль `decorators`, содержащий декораторы
+для логирования работы функций.
+
+---
+
+### Декоратор log
+
+Декоратор `log` предназначен для логирования выполнения функций.
+
+Возможности:
+- логирование успешного выполнения функции
+- логирование ошибок с указанием входных параметров
+- вывод логов в консоль или запись в файл
+
+#### Использование без файла (лог в консоль)
+
+```python
+from src.decorators import log
+
+@log()
+def add(a, b):
+    return a + b
+
+add(2, 3)
+```
+
+### Результат в консоли:
+```text
+add ok
+```
+
+### Использование с файлом
+```python
+from src.decorators import log
+
+@log(filename="mylog.txt")
+def div(a, b):
+    return a / b
+
+div(1, 0)
+```
+
+### Результат в файле mylog.txt:
+```text
+div error: division by zero. Inputs: (1, 0), {}
 ```
 
 ## Тестирование
@@ -141,11 +191,11 @@ pytest
 ```
 Запуск тестов с проверкой покрытия:
 ```bash
-pytest --cov=src.generators
+pytest --cov=src.decorators
 ```
 Генерация HTML-отчёта покрытия:
 ```bash
-pytest --cov=src.generators --cov-report=html
+pytest --cov=src.decorators --cov-report=html
 ```
 
 HTML-отчёт покрытия сохраняется в директории htmlcov.
