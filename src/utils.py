@@ -3,7 +3,6 @@ import logging
 from pathlib import Path
 from typing import Any
 
-
 # --- logger setup ---
 LOG_DIR = Path("logs")
 LOG_DIR.mkdir(exist_ok=True)

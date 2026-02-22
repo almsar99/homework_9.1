@@ -1,3 +1,6 @@
+import json
+from unittest.mock import patch
+
 from src.utils import load_transactions
 
 
@@ -16,7 +19,6 @@ def test_load_transactions_ok(tmp_path):
 
 def test_load_transactions_not_exists():
     result = load_transactions("no_such_file.json")
-
     assert result == []
 
 
@@ -28,5 +30,13 @@ def test_load_transactions_not_list(tmp_path):
     )
 
     result = load_transactions(str(file_path))
+    assert result == []
+
+
+@patch("src.utils.json.load")
+def test_load_transactions_json_decode_error(mock_json):
+    mock_json.side_effect = json.JSONDecodeError("error", "doc", 0)
+
+    result = load_transactions("data/operations.json")
 
     assert result == []

@@ -3,7 +3,6 @@ from typing import Dict
 
 import requests  # type: ignore[import-untyped]
 
-
 API_URL = "https://api.apilayer.com/exchangerates_data/latest"
 
 
