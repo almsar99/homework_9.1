@@ -2,10 +2,7 @@ from unittest.mock import patch
 
 import pandas as pd
 
-from src.readers import (
-    load_transactions_from_csv,
-    load_transactions_from_excel,
-)
+from src.readers import load_transactions_from_csv, load_transactions_from_excel
 
 
 @patch("src.readers.pd.read_csv")
